@@ -31,7 +31,7 @@ I won't bore you with the details, but the basic premise is as follows:
 
 And that's it, really. There are, however, certain things I want to do differently. These things will be the basis of how I databend with Audacity, so it's the "Required Reading" of my guides.
 
-### Import as Unsigned 8-bit PCM, not U-Law.
+## Import as Unsigned 8-bit PCM, not U-Law.
 The idea here is that this format is a direct representation of the bytes in a raw image format. If we were to use 24-bit RGB, then every R, G and B component each gets one byte each mapped to one sample of the audio.
 
 Also, U-Law introduces some error when you export it. Take this photo:
@@ -71,7 +71,7 @@ It's identical to the original, minus whatever compression artifacts were introd
 
 This nonsense involving having to open as RAW brings me to my second point:
 
-### Don't use BMP. Just use RAW images.
+## Don't use BMP. Just use RAW images.
 The problem with .bmp is that if the header's borked, you can't open it, as we just saw. This is why I prefer to work with RAW images, since you can do whatever you want with it, and as long as you know what parameters to use, it *will* open, no questions asked. They don't have a header to corrupt, so it is utterly impossible to render them unopenable.
 
 Using Irfanview, it's absolutely trivial to save an image as RAW. Let's take this image:
@@ -125,7 +125,7 @@ Set the "Save as type" to "PNG - Portable Network Graphics". PNG produces larger
 
 It depends on how long you're willing to wait, but I prefer to set my "Compression level" to 9, the highest. My databending often produces very hard-to-compress files, so I like to compress it as hard as possible just because it's more space-efficient.
 
-### Use *planar* RAW images.
+## Use *planar* RAW images.
 "Wait, what's planar?", you're probably asking. I'll try to explain it as concisely as possible:
 
 Let's define the terms R, G and B. These are the Red, Green and Blue components of an image. With RAW images, there are two standard ways to write down the image data.  Either it's interleaved, or it's planar. 
@@ -135,7 +135,7 @@ Interleaved basically goes (RGB, RGB, RGB) (the order can vary depending on the 
 Planar goes RRR, (...) GGG, (...), BBB. In this case, you get 3 monochrome "planes" (hence the term "planar") of Red, Green, and Blue stored consecutively.
 
 So what's the benefit of planar over interleaved? 
-#### Planar images are easier to work with
+### Planar images are easier to work with
 Suppose you databent an image, and it isn't centered. Maybe it's too far left, or too far right. Now, you can just save it as PNG and recenter it yourself, or you can use an option in the RAW open dialog.
 
 ![File header size](https://i.imgur.com/2fGamkI.png)
@@ -173,7 +173,7 @@ Planar images do not have this issue. Let's do the shift by 1 and 2 again:
 
 Nothing drastic, just a tiny shift to the left. The colors are preserved.
 
-#### Planar images produce more colorful results when databent
+### Planar images produce more colorful results when databent
 This is a more subjective thing, but when I databend interleaved images, I often end up "losing" color. I'll use this picture as my test subject:
 
 ![enter image description here](https://i.imgur.com/A25Vjup.jpg)
@@ -193,8 +193,9 @@ More detail is lost in the planar version, yes, but that can be mitigated by jus
 
 This tendency for interleaved formats to lose color entirely after databending is exactly why I prefer using planar formats.
 
-### Conclusion
+## Conclusion
 
 This is my way of databending, and I choose to do it this way because this method produces results that I think are good. You can do whatever you want with your art. I encourage you to come up with new and different ways that better suit your purposes.
 
 If there's anything you'd like to add or change, contact me on GitHub at [multiplealiases](https://github.com/multiplealiases). 
+
