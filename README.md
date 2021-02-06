@@ -156,11 +156,11 @@ Now, that was with a planar RAW image. What about interleaved? Let's offset by j
 
 Huh? What just happened to the colors? The problem here is that when Irfanview reads the image data, it expects it to be in the order of RGB. When you misalign it, it goes
 
-	            Index  1 2 3 4 5 6 7 8 9
-	   Expected order: R G B R G B R G B
-	   Shifted by 1  : - R G B R G B R G B
-	   Shifted by 2  : - - R G B R G B R G B
-	   Shifted by 3  : - - - R G B R G B R G B
+	            Index  1 2 3 | 4 5 6 | 7 8 9
+	   Expected order: R G B | R G B | R G B 
+	   Shifted by 1  : - R G | B R G | B R G | B
+	   Shifted by 2  : - - R | G B R | G B R | G B
+	   Shifted by 3  : - - - | R G B | R G B | R G B
 	   (- is blank; read as zero)
 It's not reading it in the right order. At index 4, where it expects R, it instead sees the G component when shifted by 1 or the B component at 2. The hue gets shifted by multiples of 60 degrees.
 
