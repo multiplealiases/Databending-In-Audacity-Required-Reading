@@ -70,17 +70,21 @@ The problem with .bmp is that if the header's borked, you can't open it, as we j
 
 Using Irfanview, it's absolutely trivial to save an image as RAW. Let's take this image:
 ![Sunflower](https://i.imgur.com/XHsLn0s.jpg)
+
 (Attribution: [Photo](https://unsplash.com/photos/5lRxNLHfZOY) by [Paul Green](https://unsplash.com/@pgreen1983) on [Unsplash](https://unsplash.com/))
 (To follow along, use the Medium version)
 
 Open it up in Irfanview:
 ![The same sunflower picture, but opened in Irfanview](https://i.imgur.com/VE22aJn.png)
+
 Go under File -> Save as..., and you'll be shown this:
 ![enter image description here](https://i.imgur.com/xgqtng2.png)
+
 The things you want to change here are the "Save as type" and the RAW save options. Set "Save as type" to "RAW - RAW Image Data" and under "Options for 24 BPP images", set "Color order: RGB" and "Planar (RRR...GGG...BBB)"
 
 I'll get to why I use a planar format later on. For now, save it. Let's take a look at it in Explorer.
 ![enter image description here](https://i.imgur.com/ATL8JZ7.png)
+
 15.8 MB. It's absolutely gigantic compared to the original, which was only
 698 KB. Why is that? The basic idea here is that these raw formats are uncompressed. They literally just write down the information as it is without compressing it at all. This is horrendous if you want to share images, but it's absolutely invaluable to how I databend. Compressed formats have this tendency to just break if you're not careful.
 
@@ -99,8 +103,10 @@ In general, you want to match the original image's properties.
 
 Once that's done, you should see this:
 ![enter image description here](https://i.imgur.com/SquWZmU.png)
+
 And you've just opened a RAW image. Let's pretend this is a databent file we just made, and you want to make a copy of it that you can easily share. Repeat the process of Saving As, and this shows up:
 ![enter image description here](https://i.imgur.com/iMnJiW1.png)
+
 Set the "Save as type" to "PNG - Portable Network Graphics". PNG produces larger formats than JPEG, yes, but I do this because PNG is lossless. It is a perfect, pixel-for-pixel copy of the image. Think of it as a master, the absolute highest quality version of your image that you can use for editing. For sharing, you can use JPEG, scale the image down, whatever.  
 
 It depends on how long you're willing to wait, but I prefer to set my "Compression level" to 9, the highest. My databending often produces very hard-to-compress files, so I like to compress it as hard as possible just because it's more space-efficient.
@@ -122,10 +128,14 @@ File header size. This essentially shifts the image left by however many pixels 
 ![enter image description here](https://i.imgur.com/yhgE1YJ.jpg)[Photo](https://unsplash.com/) by [Jessica Ruscello](https://unsplash.com/@jruscello) on [Unsplash](https://unsplash.com)
 
 Let's adjust the header size to 500, 1000, and 1500.
-![enter image description here](https://i.imgur.com/teSZTmz.jpg)![enter image description here](https://i.imgur.com/c0ynnwH.jpg)![enter image description here](https://i.imgur.com/L10oCed.jpg)So the offset just shifts the image by some amount left, and anything that would "fall off" the left edge just gets wrapped around to the right.
+![enter image description here](https://i.imgur.com/teSZTmz.jpg)![enter image description here](https://i.imgur.com/c0ynnwH.jpg)![enter image description here](https://i.imgur.com/L10oCed.jpg)
+
+So the offset just shifts the image by some amount left, and anything that would "fall off" the left edge just gets wrapped around to the right.
 
 Now, that was with a planar RAW image. What about interleaved? Let's offset by just 1 and 2 bytes.
-![enter image description here](https://i.imgur.com/YuclGdI.jpg)![enter image description here](https://i.imgur.com/U0SemKj.jpg)Huh? What just happened to the colors? The problem here is that when Irfanview reads the image data, it expects it to be in the order of RGB. When you misalign it, it goes
+![enter image description here](https://i.imgur.com/YuclGdI.jpg)![enter image description here](https://i.imgur.com/U0SemKj.jpg)
+
+Huh? What just happened to the colors? The problem here is that when Irfanview reads the image data, it expects it to be in the order of RGB. When you misalign it, it goes
 
 	            Index  1 2 3 4 5 6 7 8 9
 	   Expected order: R G B R G B R G B
@@ -140,6 +150,7 @@ So then you have to increment the offset by 1 over and over trying to hit a numb
 Planar images do not have this issue. Let's do the shift by 1 and 2 again:
 ![enter image description here](https://i.imgur.com/T6LFyst.jpg)
 ![enter image description here](https://i.imgur.com/jayNHzy.jpg)
+
 Nothing drastic, just a tiny shift to the left. The colors are preserved.
 
 #### Planar images produce more colorful results when databent
