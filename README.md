@@ -129,7 +129,8 @@ So what's the benefit of planar over interleaved?
 #### Planar images are easier to work with
 Suppose you databent an image, and it isn't centered. Maybe it's too far left, or too far right. Now, you can just save it as PNG and recenter it yourself, or you can use an option in the RAW open dialog.
 
-![enter image description here](https://i.imgur.com/2fGamkI.png)
+![File header size](https://i.imgur.com/2fGamkI.png)
+
 File header size. This essentially shifts the image left by however many pixels you specify in bytes. You don't have to be perfect on the first try; you can just reopen the image over and over, adjusting the file header size until the image is centered. You'll lose a few pixels this way, but one or two lines of pixels in an image with a thousand isn't worth crying over. I'll demonstrate with this picture:
 
 ![enter image description here](https://i.imgur.com/yhgE1YJ.jpg)[Photo](https://unsplash.com/) by [Jessica Ruscello](https://unsplash.com/@jruscello) on [Unsplash](https://unsplash.com)
@@ -141,6 +142,7 @@ Let's adjust the header size to 500, 1000, and 1500.
 So the offset just shifts the image by some amount left, and anything that would "fall off" the left edge just gets wrapped around to the right.
 
 Now, that was with a planar RAW image. What about interleaved? Let's offset by just 1 and 2 bytes.
+
 ![enter image description here](https://i.imgur.com/YuclGdI.jpg)![enter image description here](https://i.imgur.com/U0SemKj.jpg)
 
 Huh? What just happened to the colors? The problem here is that when Irfanview reads the image data, it expects it to be in the order of RGB. When you misalign it, it goes
@@ -171,9 +173,11 @@ This is a more subjective thing, but when I databend interleaved images, I often
 
 Let's do the same databend to a planar and interleaved version of the same image: a low-pass filter of 1000 Hz with a roll-off of 48 dB per octave:
 Interleaved:
+
 ![enter image description here](https://i.imgur.com/YVA1hsb.jpg)
 
 Planar:
+
 ![enter image description here](https://i.imgur.com/QszUDA9.jpg)
 More detail is lost in the planar version, yes, but that can be mitigated by just adjusting the cut-off of the filter upwards. What you can't mitigate, however, is the total loss of color in the interleaved version. Boost that saturation up as much as you want; you're not getting that color back.
 
