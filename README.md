@@ -54,7 +54,7 @@ Just ignore it, and go straight to File -> Export -> Export Audio..., and you'll
 
 Save, and you'll end up with an image that looks like this:
 
-![Same image as the original wallpaper photo, but with lines of green and red running across it.](https://i.imgur.com/K2gOGy7.jpg)
+![Same image as the original wallpaper photo, but with curved lines of green and red running across it.](https://i.imgur.com/K2gOGy7.jpg)
 
 I'm not sure about you, but I'd rather have the effects corrupt the image, not the encoding itself. 
 
@@ -66,7 +66,7 @@ Which is not the intended result. Unsigned 8-bit seems to corrupt the header mor
 
 However, if you open it with those parameters anyway, you'll be greeted with this:
 
-![enter image description here](https://i.imgur.com/s83ZWvD.jpg)
+![An identical copy of the original wallpaper photo.](https://i.imgur.com/s83ZWvD.jpg)
 It's identical to the original, minus whatever compression artifacts were introduced due to saving in JPEG. This is perfect.
 
 This nonsense involving having to open as RAW brings me to my second point:
@@ -76,7 +76,7 @@ The problem with .bmp is that if the header's borked, you can't open it, as we j
 
 Using Irfanview, it's absolutely trivial to save an image as RAW. Let's take this image:
 
-![Sunflower](https://i.imgur.com/XHsLn0s.jpg)
+![close-up photo of common sunflower](https://i.imgur.com/XHsLn0s.jpg)
 
 (Attribution: [Photo](https://unsplash.com/photos/5lRxNLHfZOY) by [Paul Green](https://unsplash.com/@pgreen1983) on [Unsplash](https://unsplash.com/))
 (To follow along, use the Medium version)
@@ -87,13 +87,13 @@ Open it up in Irfanview:
 
 Go under File -> Save as..., and you'll be shown this:
 
-![enter image description here](https://i.imgur.com/xgqtng2.png)
+![Save as dialog in Irfanview](https://i.imgur.com/xgqtng2.png)
 
 The things you want to change here are the "Save as type" and the RAW save options. Set "Save as type" to "RAW - RAW Image Data" and under "Options for 24 BPP images", set "Color order: RGB" and "Planar (RRR...GGG...BBB)"
 
 I'll get to why I use a planar format later on. For now, save it. Let's take a look at it in Explorer.
 
-![enter image description here](https://i.imgur.com/ATL8JZ7.png)
+![Windows Explorer interface. "sunflower.raw" is selected, showing a size of 15.8MB.](https://i.imgur.com/ATL8JZ7.png)
 
 15.8 MB. It's absolutely gigantic compared to the original, which was only
 698 KB. Why is that? The basic idea here is that these raw formats are uncompressed. They literally just write down the information as it is without compressing it at all. This is horrendous if you want to share images, but it's absolutely invaluable to how I databend. Compressed formats have this tendency to just break if you're not careful.
@@ -102,7 +102,7 @@ For most practical databending, a resolution of (something)×1080 (keeping aspec
 
 To open the raw image that we just made, let's go back to Irfanview and try to open it:
 
-![enter image description here](https://i.imgur.com/BnppH7N.png)
+![Irfanview "Set RAW open parameters" dialog](https://i.imgur.com/BnppH7N.png)
 
 And this shows up again. The important things to follow are
 
@@ -115,11 +115,11 @@ In general, you want to match the original image's properties.
 
 Once that's done, you should see this:
 
-![enter image description here](https://i.imgur.com/SquWZmU.png)
+![Irfanview interface. It is showing a picture of a sunflower.](https://i.imgur.com/SquWZmU.png)
 
 And you've just opened a RAW image. Let's pretend this is a databent file we just made, and you want to make a copy of it that you can easily share. Repeat the process of Saving As, and this shows up:
 
-![enter image description here](https://i.imgur.com/iMnJiW1.png)
+!["Save Picture As..." dialog in Irfanview.](https://i.imgur.com/iMnJiW1.png)
 
 Set the "Save as type" to "PNG - Portable Network Graphics". PNG produces larger formats than JPEG, yes, but I do this because PNG is lossless. It is a perfect, pixel-for-pixel copy of the image. Think of it as a master, the absolute highest quality version of your image that you can use for editing. For sharing, you can use JPEG, scale the image down, whatever.  
 
@@ -142,17 +142,17 @@ Suppose you databent an image, and it isn't centered. Maybe it's too far left, o
 
 File header size. This essentially shifts the image left by however many pixels you specify in bytes. You don't have to be perfect on the first try; you can just reopen the image over and over, adjusting the file header size until the image is centered. You'll lose a few pixels this way, but one or two lines of pixels in an image with a thousand isn't worth crying over. I'll demonstrate with this picture:
 
-![enter image description here](https://i.imgur.com/yhgE1YJ.jpg)[Photo](https://unsplash.com/) by [Jessica Ruscello](https://unsplash.com/@jruscello) on [Unsplash](https://unsplash.com)
+![assorted color wooden frames photo (original)](https://i.imgur.com/yhgE1YJ.jpg)[Photo](https://unsplash.com/photos/-GUyf8ZCTHM) by [Jessica Ruscello](https://unsplash.com/@jruscello) on [Unsplash](https://unsplash.com)
 
 Let's adjust the header size to 500, 1000, and 1500.
 
-![enter image description here](https://i.imgur.com/teSZTmz.jpg)![enter image description here](https://i.imgur.com/c0ynnwH.jpg)![enter image description here](https://i.imgur.com/L10oCed.jpg)
+![Original color wooden frames photo, shifted by 500 bytes. Approximately a quarter of the image's left side is now being displayed on the right due to wraparound.](https://i.imgur.com/teSZTmz.jpg)![Original color wooden frames photo, shifted by 1000 bytes. Approximately half of the image's left side is now being displayed on the right due to wraparound.](https://i.imgur.com/c0ynnwH.jpg)![Original color wooden frames photo, shifted by 1500 bytes. Approximately three-quarter of the image's left side is now being displayed on the right due to wraparound.](https://i.imgur.com/L10oCed.jpg)
 
 So the offset just shifts the image by some amount left, and anything that would "fall off" the left edge just gets wrapped around to the right.
 
 Now, that was with a planar RAW image. What about interleaved? Let's offset by just 1 and 2 bytes.
 
-![enter image description here](https://i.imgur.com/YuclGdI.jpg)![enter image description here](https://i.imgur.com/U0SemKj.jpg)
+![A hue-shifted version of the original colored wooden frames photo. All reds in the original have been shifted to being green.](https://i.imgur.com/YuclGdI.jpg)![A hue-shifted version of the original colored wooden frames photo. All reds in the original have been shifted to being blue.](https://i.imgur.com/U0SemKj.jpg)
 
 Huh? What just happened to the colors? The problem here is that when Irfanview reads the image data, it expects it to be in the order of RGB. When you misalign it, it goes
 
@@ -168,27 +168,27 @@ So then you have to increment the offset by 1 over and over trying to hit a numb
 
 Planar images do not have this issue. Let's do the shift by 1 and 2 again:
 
-![enter image description here](https://i.imgur.com/T6LFyst.jpg)
-![enter image description here](https://i.imgur.com/jayNHzy.jpg)
+![assorted color wooden frames photo shifted by 1 byte. The difference between this and the original is imperceptible.](https://i.imgur.com/T6LFyst.jpg)
+![assorted color wooden frames photo shifted by 2 bytes. The difference between this and the original is imperceptible.](https://i.imgur.com/jayNHzy.jpg)
 
 Nothing drastic, just a tiny shift to the left. The colors are preserved.
 
 ### Planar images produce more colorful results when databent
 This is a more subjective thing, but when I databend interleaved images, I often end up "losing" color. I'll use this picture as my test subject:
 
-![enter image description here](https://i.imgur.com/A25Vjup.jpg)
-[Photo](https://unsplash.com/photos/Haz8prUXrI4) by [David Clode](https://unsplash.com/@davidclode?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/colorful?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+![yellow, red, blue, and green feathers photo (original)](https://i.imgur.com/A25Vjup.jpg)
+[Photo](https://unsplash.com/photos/Haz8prUXrI4) by [David Clode](https://unsplash.com/@davidclode) on [Unsplash](https://unsplash.com)
 (Medium size used)
 
 Let's do the same databend to a planar and interleaved version of the same image: a low-pass filter of 1000 Hz with a roll-off of 48 dB per octave.
 
 Interleaved:
 
-![enter image description here](https://i.imgur.com/YVA1hsb.jpg)
+![The same photo as before, but now monochromatic and blurry.](https://i.imgur.com/YVA1hsb.jpg)
 
 Planar:
 
-![enter image description here](https://i.imgur.com/QszUDA9.jpg)
+![The same photo as the original, but now blurry. It is even blurrier than the previous image.](https://i.imgur.com/QszUDA9.jpg)
 
 More detail is lost in the planar version, yes, but that can be mitigated by just adjusting the cut-off of the filter upwards. What you can't mitigate, however, is the total loss of color in the interleaved version. Boost that saturation up as much as you want; you're not getting that color back.
 
