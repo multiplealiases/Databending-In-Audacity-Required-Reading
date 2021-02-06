@@ -35,6 +35,7 @@ And that's it, really. There are, however, certain things I want to do different
 The idea here is that this format is a direct representation of the bytes in a raw image format. If we were to use 24-bit RGB, then every R, G and B component each gets one byte each mapped to one sample of the audio.
 
 Also, U-Law introduces some error when you export it. Take this photo:
+
 ![Wallpaper photo](https://imgur.com/CCUypqN.jpg)
 [Photo](https://unsplash.com/photos/n7a2OJDSZns) by [Harli Marten](https://unsplash.com/@harlimarten) on [Unsplash](https://unsplash.com/)
 (If you wish to replicate my results, download the Medium-sized image)
@@ -44,22 +45,27 @@ Convert that into .bmp. Import it into Audacity as raw data with the following s
 ![Audacity "Import Raw Data" dialogue. Encoding is U-Law, Byte order is Little-endian, Channels is 1 Channel (Mono). Start offset is 0 bytes, Amount to import is 100%, and sample rate is 44100 Hz](https://i.imgur.com/UqudxNc.png)
 
 You'll see something like this:
+
 ![Audacity interface. It shows the waveform of a .bmp file interpreted as U-Law audio. ](https://i.imgur.com/gh4VPtZ.png)
 
 Just ignore it, and go straight to File -> Export -> Export Audio..., and you'll see this dialogue. Change the settings as shown.
+
 ![Audacity "Export Audio" dialog. Under Format Options, Heading is set to "RAW (header-less)" and Encoding is set to "U-Law"](https://i.imgur.com/LLozAix.png)
 
 Save, and you'll end up with an image that looks like this:
+
 ![Same image as the original wallpaper photo, but with lines of green and red running across it.](https://i.imgur.com/K2gOGy7.jpg)
 
 I'm not sure about you, but I'd rather have the effects corrupt the image, not the encoding itself. 
 
 If you did the exact same thing, but with the import and export encoding set to "Unsigned 8-bit", you'll get this:
+
 ![Irfanview "Set RAW open parameters" dialog](https://i.imgur.com/mAv1UkA.png)
 
 Which is not the intended result. Unsigned 8-bit seems to corrupt the header more often than not, and it'll open as a .raw file instead of a .bmp file. Most photo viewers won't even give you this, instead spitting out something like "corrupted file".
 
 However, if you open it with those parameters anyway, you'll be greeted with this:
+
 ![enter image description here](https://i.imgur.com/s83ZWvD.jpg)
 It's identical to the original, minus whatever compression artifacts were introduced due to saving in JPEG. This is perfect.
 
@@ -69,6 +75,7 @@ This nonsense involving having to open as RAW brings me to my second point:
 The problem with .bmp is that if the header's borked, you can't open it, as we just saw. This is why I prefer to work with RAW images, since you can do whatever you want with it, and as long as you know what parameters to use, it *will* open, no questions asked. They don't have a header to corrupt, so it is utterly impossible to render them unopenable.
 
 Using Irfanview, it's absolutely trivial to save an image as RAW. Let's take this image:
+
 ![Sunflower](https://i.imgur.com/XHsLn0s.jpg)
 
 (Attribution: [Photo](https://unsplash.com/photos/5lRxNLHfZOY) by [Paul Green](https://unsplash.com/@pgreen1983) on [Unsplash](https://unsplash.com/))
@@ -85,6 +92,7 @@ Go under File -> Save as..., and you'll be shown this:
 The things you want to change here are the "Save as type" and the RAW save options. Set "Save as type" to "RAW - RAW Image Data" and under "Options for 24 BPP images", set "Color order: RGB" and "Planar (RRR...GGG...BBB)"
 
 I'll get to why I use a planar format later on. For now, save it. Let's take a look at it in Explorer.
+
 ![enter image description here](https://i.imgur.com/ATL8JZ7.png)
 
 15.8 MB. It's absolutely gigantic compared to the original, which was only
@@ -93,6 +101,7 @@ I'll get to why I use a planar format later on. For now, save it. Let's take a l
 For most practical databending, a resolution of (something)×1080 (keeping aspect ratio) is probably enough. Larger files are harder for Audacity to work with because they're read as longer audio and take longer to process. I won't stop you, of course, but just be mindful of that. I'll assume you know how to resize images.
 
 To open the raw image that we just made, let's go back to Irfanview and try to open it:
+
 ![enter image description here](https://i.imgur.com/BnppH7N.png)
 
 And this shows up again. The important things to follow are
@@ -179,6 +188,7 @@ Interleaved:
 Planar:
 
 ![enter image description here](https://i.imgur.com/QszUDA9.jpg)
+
 More detail is lost in the planar version, yes, but that can be mitigated by just adjusting the cut-off of the filter upwards. What you can't mitigate, however, is the total loss of color in the interleaved version. Boost that saturation up as much as you want; you're not getting that color back.
 
 This tendency for interleaved formats to lose color entirely after databending is exactly why I prefer using planar formats.
