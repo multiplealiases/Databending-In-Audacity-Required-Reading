@@ -56,7 +56,7 @@ Save, and you'll end up with an image that looks like this:
 
 ![Same image as the original wallpaper photo, but with curved lines of green and red running across it.](https://i.imgur.com/K2gOGy7.jpg)
 
-I'm not sure about you, but I'd rather have the effects corrupt the image, not the encoding itself. 
+I'm not sure about you, but I'd rather have the effects corrupt the image, rather the encoding doing the same without doing anything. 
 
 If you did the exact same thing, but with the import and export encoding set to "Unsigned 8-bit", you'll get this:
 
