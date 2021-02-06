@@ -36,7 +36,6 @@ The idea here is that this format is a direct representation of the bytes in a r
 
 Also, U-Law introduces some error when you export it. Take this photo:
 ![Wallpaper photo](https://imgur.com/CCUypqN.jpg)
-
 [Photo](https://unsplash.com/photos/n7a2OJDSZns) by [Harli Marten](https://unsplash.com/@harlimarten) on [Unsplash](https://unsplash.com/)
 (If you wish to replicate my results, download the Medium-sized image)
 
@@ -48,12 +47,16 @@ You'll see something like this:
 ![Audacity interface. It shows the waveform of a .bmp file interpreted as U-Law audio. ](https://i.imgur.com/gh4VPtZ.png)
 
 Just ignore it, and go straight to File -> Export -> Export Audio..., and you'll see this dialogue. Change the settings as shown.
-![Audacity "Export Audio" dialog. Under Format Options, Heading is set to "RAW (header-less)" and Encoding is set to "U-Law"](https://i.imgur.com/LLozAix.png)Save, and you'll end up with an image that looks like this:
+![Audacity "Export Audio" dialog. Under Format Options, Heading is set to "RAW (header-less)" and Encoding is set to "U-Law"](https://i.imgur.com/LLozAix.png)
+
+Save, and you'll end up with an image that looks like this:
 ![Same image as the original wallpaper photo, but with lines of green and red running across it.](https://i.imgur.com/K2gOGy7.jpg)
+
 I'm not sure about you, but I'd rather have the effects corrupt the image, not the encoding itself. 
 
 If you did the exact same thing, but with the import and export encoding set to "Unsigned 8-bit", you'll get this:
 ![Irfanview "Set RAW open parameters" dialog](https://i.imgur.com/mAv1UkA.png)
+
 Which is not the intended result. Unsigned 8-bit seems to corrupt the header more often than not, and it'll open as a .raw file instead of a .bmp file. Most photo viewers won't even give you this, instead spitting out something like "corrupted file".
 
 However, if you open it with those parameters anyway, you'll be greeted with this:
