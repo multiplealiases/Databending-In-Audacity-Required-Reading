@@ -95,6 +95,7 @@ For most practical databending, a resolution of (something)×1080 (keeping aspec
 
 To open the raw image that we just made, let's go back to Irfanview and try to open it:
 ![enter image description here](https://i.imgur.com/BnppH7N.png)
+
 And this shows up again. The important things to follow are
 
  - Set resolution to the original image's. In this case, "Image width" is 1920, and "Image height" is 2880.
