@@ -72,7 +72,6 @@ Using Irfanview, it's absolutely trivial to save an image as RAW. Let's take thi
 ![Sunflower](https://i.imgur.com/XHsLn0s.jpg)
 
 (Attribution: [Photo](https://unsplash.com/photos/5lRxNLHfZOY) by [Paul Green](https://unsplash.com/@pgreen1983) on [Unsplash](https://unsplash.com/))
-
 (To follow along, use the Medium version)
 
 Open it up in Irfanview:
@@ -106,9 +105,11 @@ And this shows up again. The important things to follow are
 In general, you want to match the original image's properties.
 
 Once that's done, you should see this:
+
 ![enter image description here](https://i.imgur.com/SquWZmU.png)
 
 And you've just opened a RAW image. Let's pretend this is a databent file we just made, and you want to make a copy of it that you can easily share. Repeat the process of Saving As, and this shows up:
+
 ![enter image description here](https://i.imgur.com/iMnJiW1.png)
 
 Set the "Save as type" to "PNG - Portable Network Graphics". PNG produces larger formats than JPEG, yes, but I do this because PNG is lossless. It is a perfect, pixel-for-pixel copy of the image. Think of it as a master, the absolute highest quality version of your image that you can use for editing. For sharing, you can use JPEG, scale the image down, whatever.  
@@ -127,11 +128,14 @@ Planar goes RRR, (...) GGG, (...), BBB. In this case, you get 3 monochrome "plan
 So what's the benefit of planar over interleaved? 
 #### Planar images are easier to work with
 Suppose you databent an image, and it isn't centered. Maybe it's too far left, or too far right. Now, you can just save it as PNG and recenter it yourself, or you can use an option in the RAW open dialog.
+
 ![enter image description here](https://i.imgur.com/2fGamkI.png)
 File header size. This essentially shifts the image left by however many pixels you specify in bytes. You don't have to be perfect on the first try; you can just reopen the image over and over, adjusting the file header size until the image is centered. You'll lose a few pixels this way, but one or two lines of pixels in an image with a thousand isn't worth crying over. I'll demonstrate with this picture:
+
 ![enter image description here](https://i.imgur.com/yhgE1YJ.jpg)[Photo](https://unsplash.com/) by [Jessica Ruscello](https://unsplash.com/@jruscello) on [Unsplash](https://unsplash.com)
 
 Let's adjust the header size to 500, 1000, and 1500.
+
 ![enter image description here](https://i.imgur.com/teSZTmz.jpg)![enter image description here](https://i.imgur.com/c0ynnwH.jpg)![enter image description here](https://i.imgur.com/L10oCed.jpg)
 
 So the offset just shifts the image by some amount left, and anything that would "fall off" the left edge just gets wrapped around to the right.
@@ -152,6 +156,7 @@ It's not reading it in the right order. At index 4, where it expects R, it inste
 So then you have to increment the offset by 1 over and over trying to hit a number that gives you the "expected order" and therefore the correct colors. If the image hasn't been databent, you basically lock it to the nearest multiple of 3. If it has been databent, you'll have to find out by trial and error to find if the pattern's 3n, 3n + 1, or 3n + 2.
 
 Planar images do not have this issue. Let's do the shift by 1 and 2 again:
+
 ![enter image description here](https://i.imgur.com/T6LFyst.jpg)
 ![enter image description here](https://i.imgur.com/jayNHzy.jpg)
 
@@ -159,6 +164,7 @@ Nothing drastic, just a tiny shift to the left. The colors are preserved.
 
 #### Planar images produce more colorful results when databent
 This is a more subjective thing, but when I databend interleaved images, I often end up "losing" color. I'll use this picture as my test subject:
+
 ![enter image description here](https://i.imgur.com/A25Vjup.jpg)
 [Photo](https://unsplash.com/photos/Haz8prUXrI4) by [David Clode](https://unsplash.com/@davidclode?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/colorful?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 (Medium size used)
