@@ -12,13 +12,22 @@ A while ago, I read about [databending using Audacity](https://www.hellocatfood.
 
 I won't bore you with the details, but the basic premise is as follows: 
 
-```mermaid
-graph LR
-A(Take .bmp image) -->B(Import as raw data in Audacity)
-B --> C(Do wacky effects to audio)
-C --> D(Save audio)
-D --> E(Open resulting image)
-```
+	   +-------------------+         +--------------------------------+            +-------------------------------------+
+	   |                   |         |                                |            |                                     |
+ 	   | Take a .bmp image | +-----> | Import as raw data in Audacity |  +------>  | Do wacky effects to imported audio  | +->
+	   |                   |         |                                |            |                                     |
+	   +-------------------+         +--------------------------------+            +-------------------------------------+
+	
+	
+	
+	
+	   +-------------------+                     +----------------------+              +---------------------------------+
+	   |                   |                     |                      |              |                                 |
+	+> | Save audio as RAW | +---------------->  | Open resulting image | +----------> | Save in a more shareable format |
+	   |                   |                     |                      |              |                                 |
+	   +-------------------+                     +----------------------+              +---------------------------------+
+
+
 
 And that's it, really. There are, however, certain things I want to do differently. These things will be the basis of how I databend with Audacity, so it's the "Required Reading" of my guides.
 
