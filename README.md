@@ -72,12 +72,15 @@ Using Irfanview, it's absolutely trivial to save an image as RAW. Let's take thi
 ![Sunflower](https://i.imgur.com/XHsLn0s.jpg)
 
 (Attribution: [Photo](https://unsplash.com/photos/5lRxNLHfZOY) by [Paul Green](https://unsplash.com/@pgreen1983) on [Unsplash](https://unsplash.com/))
+
 (To follow along, use the Medium version)
 
 Open it up in Irfanview:
+
 ![The same sunflower picture, but opened in Irfanview](https://i.imgur.com/VE22aJn.png)
 
 Go under File -> Save as..., and you'll be shown this:
+
 ![enter image description here](https://i.imgur.com/xgqtng2.png)
 
 The things you want to change here are the "Save as type" and the RAW save options. Set "Save as type" to "RAW - RAW Image Data" and under "Options for 24 BPP images", set "Color order: RGB" and "Planar (RRR...GGG...BBB)"
