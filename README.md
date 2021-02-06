@@ -180,7 +180,8 @@ This is a more subjective thing, but when I databend interleaved images, I often
 [Photo](https://unsplash.com/photos/Haz8prUXrI4) by [David Clode](https://unsplash.com/@davidclode?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/colorful?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 (Medium size used)
 
-Let's do the same databend to a planar and interleaved version of the same image: a low-pass filter of 1000 Hz with a roll-off of 48 dB per octave:
+Let's do the same databend to a planar and interleaved version of the same image: a low-pass filter of 1000 Hz with a roll-off of 48 dB per octave.
+
 Interleaved:
 
 ![enter image description here](https://i.imgur.com/YVA1hsb.jpg)
