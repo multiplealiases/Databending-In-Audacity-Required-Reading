@@ -198,5 +198,5 @@ This tendency for interleaved formats to lose color entirely after databending i
 
 This is my way of databending, and I choose to do it this way because this method produces results that I think are good. You can do whatever you want with your art. I encourage you to come up with new and different ways that better suit your purposes.
 
-If there's anything you'd like to add or change, contact me on GitHub at [multiplealiases](https://github.com/multiplealiases). 
+If there's anything you'd like to add or change, fork (and add a pull request) this repository or contact me on GitHub at [multiplealiases](https://github.com/multiplealiases). 
 
