@@ -198,6 +198,8 @@ This tendency for interleaved formats to lose color entirely after databending i
 
 This is my way of databending, and I choose to do it this way because this method produces results that I think are good. You can do whatever you want with your art. I encourage you to come up with new and different ways that better suit your purposes.
 
+Updated: Here's an addendum to this article, *[What happens if you use different audio encodings while importing?](https://github.com/multiplealiases/Addendum-Using-Different-Audio-Encodings/blob/main/README.md)*
+
 If there's anything you'd like to add or change, fork (and add a pull request) this repository or contact me on GitHub at [multiplealiases](https://github.com/multiplealiases). 
 
 
@@ -211,3 +213,4 @@ This work (excluding the images that originated from [Unsplash](https://unsplash
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+
