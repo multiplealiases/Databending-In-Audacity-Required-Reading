@@ -202,7 +202,7 @@ This is my way of databending, and I choose to do it this way because this metho
 
 Updated: Here's an addendum to this article, *[What happens if you use different audio encodings while importing?](https://github.com/multiplealiases/Addendum-Using-Different-Audio-Encodings/blob/main/README.md)*
 
-If there's anything you'd like to add or change, fork (and add a pull request) this repository or contact me on GitHub at [multiplealiases](https://github.com/multiplealiases). 
+If there's anything you'd like to add or change, fork (and add a pull request) this repository or find my contact info on GitHub at [multiplealiases](https://github.com/multiplealiases). 
 
 
 ***
