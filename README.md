@@ -29,9 +29,11 @@ I won't bore you with the details, but the basic premise is as follows:
 	   +-------------------+                     +----------------------+              +---------------------------------+
 
 
+The general idea is that digital data, according to a computer, is just a stream of numbers. It's *all* numbers in the end. Anything higher than that is just an interpretation of those numbers. This very text you're reading? Numbers! All the music you listen to? Numbers! Pictures? More numbers! It's all numbers in the end.
 
+As such, if you're in an uncompressed raw format that is meant to describe audio, images, video, whatever, it's trivial to just get the computer to misinterpret it as something else if you know the tricks to do it. That's sorta the goal of this series, insofar as it has one: misinterpretation.
 
-And that's it, really. There are, however, certain things I want to do differently. These things will be the basis of how I databend with Audacity, so it's the "Required Reading" of my guides.
+ There are, however, certain things I want to do differently from that first article. These things will be the basis of how I databend with Audacity (and with other tools that get introduced later, if applicable), so it's the "Required Reading" of my guides.
 
 ## Import as Unsigned 8-bit PCM, not U-Law.
 The idea here is that this format is a direct representation of the bytes in a raw image format. If we were to use 24-bit RGB, then every R, G and B component each gets one byte each mapped to one sample of the audio.
@@ -213,3 +215,4 @@ This work (excluding the images that are explicitly credited to [Unsplash](https
 
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+
